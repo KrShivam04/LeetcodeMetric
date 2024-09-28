@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeetMetrics : Question Overview</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+</head>
+<body>
+ 
+    <div class="container">
+        <!-- User heading section -->
+         <h1 class="HeadingClass">
+            LeetMetric
+         </h1>
+ 
+         <div class="user-container">
+            <p>Enter your username below : </p>
+            <div class="user-input-container">
+                <input type="text" placeholder="Enter Your Leetcode Username : " id="user-input">
+                <button id="search-button">Search</button>
+            </div>
+         </div>
+         <div class="stats-container">
+            <div class="progress">
+                <div class="progress-item circle">
+                    <div class="easy-progress">
+                        <div id="easy-label"></div>
+                        <p id="paraText">Easy</p>
+                    </div>
+                </div>
+ 
+                <div class="progress-item circle">
+                    <div class="medium-progress">
+                        <div id="medium-label"></div>
+                        <p id="paraText">Medium</p>
+                    </div>
+                </div>
+ 
+                <div class="progress-item circle">
+                    <div class="hard-progress">
+                        <div id="hard-label"></div>
+                        <p id="paraText">Hard</p>
+                    </div>
+                </div>
+            </div>
+ 
+            <div class="stats-card">
+                <!-- directly make the card using JavaScript -->
+            </div>
+ 
+         </div>
+    </div>
+ 
+ 
+    <script src="script.js"></script>
+</body>
+</html>
