@@ -38,29 +38,36 @@ document.addEventListener('DOMContentLoaded', function () {
         label.textContent = `${solved}/${total}`;
     }
     
-    
-    
-    
 
     // Diplaying the user-data on console
 
     const displayUserData = (data) => {
         console.log("In display user Data function!!!");
         console.log(data);
+        if (data.errors && data.errors.length > 0) {
+            alert(data.errors[0].message); 
+            statsContainer.style.display = 'none' 
+            return;
+        }
+        else {
+            // Total count of solved question 
+            const totalEasySolved = data.totalSubmissions[1].count;
+            const totalMediumSolved = data.totalSubmissions[2].count;
+            const totalHardSolved = data.totalSubmissions[3].count;
 
-        // Total count of solved question 
-        const totalEasySolved = data.totalSubmissions[1].count;
-        const totalMediumSolved = data.totalSubmissions[2].count;
-        const totalHardSolved = data.totalSubmissions[3].count;
+            // Total number of question 
+            const totalEasyQuestions = data.totalEasy;
+            const totalMediumQuestions = data.totalMedium;
+            const totalHardQuestions = data.totalHard;
 
-        // Total number of question 
-        const totalEasyQuestions = data.totalEasy;
-        const totalMediumQuestions = data.totalMedium;
-        const totalHardQuestions = data.totalHard;
+            
+            document.querySelector('.stats-container').style.display = 'flex';
+            
+            updateProgress(totalEasySolved, totalEasyQuestions, easyLabel, easyProgress);
+            updateProgress(totalMediumSolved, totalMediumQuestions, mediumLabel, mediumProgress);
+            updateProgress(totalHardSolved, totalHardQuestions, hardLabel, hardProgress);
+        }
         
-        updateProgress(totalEasySolved, totalEasyQuestions, easyLabel, easyProgress);
-        updateProgress(totalMediumSolved, totalMediumQuestions, mediumLabel, mediumProgress);
-        updateProgress(totalHardSolved, totalHardQuestions, hardLabel, hardProgress);
         
     }
 
@@ -94,6 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // When the button is clicked
 
     searchButton.addEventListener('click', function () {
+        
         const userName = userNameInput.value;
         console.log(`Logging User =>  ${userName}`);
         if (validateUser(userName)) {
